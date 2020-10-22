@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        window.alert('please check Ngo detail or enter unique registration number');
+    </script>
+    <title>error</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<div class="container">
+
+    <form action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}<label>NGO REG NO :</label> {{form.reg_no}}
+        <br><br> <label>NGO NAME</label>{{form.name}}
+        <br><br><label>NGO specialization</label> {{form.specialization}}
+        <br><br><label>NGO LOCATION</label>{{form.location}}
+        <br><br><label>NGO STATE</label> {{form.state}}
+        <br><br><label>NGO CITY</label> {{form.city}}
+        <br><br><label>NGO LOGO</label> {{form.ngo_logo}}
+        <br><br><label>NGO ADDRESS</label> <br>{{form.address}}
+        <br><br><label>NGO MOBILE</label> {{form.mobile}}
+        <br><br><label>NGO DESCRIPTION</label><br> {{form.description}}
+        <br><br> <label>NGO WEBSITE</label>{{form.website}}
+        <br><br>
+        <button type="submit" class="btn btn-default btn-primary">Add Ngo</button>
+</div>
+</div>
+</form>
+
+{% if obj %}
+<h3>Succesfully uploaded : {{img_obj.ngo_logo}}</h3>
+
+{% endif %}

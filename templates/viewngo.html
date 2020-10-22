@@ -1,0 +1,59 @@
+{%extends 'base.html'%} {%block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ngo Detail</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>Name : {{ngo.name}}</h1>
+        <p>Registration Number :{{ngo.reg_no}}</p>
+        <h4>Ratings : {{rat.rating__avg}}</h4>
+        <a href="review?regno={{ngo.reg_no}}">write a review</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{{ngo.ngo_logo.url}}" height="150px" width="150px">
+            </div>
+            <div class="col-sm-4">
+                <h3>Specialization</h3>
+                <p>{{ngo.specialization}}</p>
+                <h3>Address</h3>
+                <p>{{ngo.address}}</p>
+            </div>
+            <div class="col-sm-4">
+                <h3>About Ngo</h3>
+                <p>{{ngo.description}}</p>
+                <h3>Ngo Website</h3>
+                <p>{{ngo.website}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron text-center">
+        <div class="container">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">view comments</button>
+            <div id="demo" class="collapse">
+                {%for c in comments %}
+                <p>{{c.comment}}</p>
+                <p>{{c.name}}</p>
+                {%endfor%}
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+{%endblock%}

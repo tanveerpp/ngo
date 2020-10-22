@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% load static %} {% static "images" as baseURL %} {% block title %}Ngo's {% endblock %} {% block content %}
+
+<div class="d-flex justify-content-center mt-2">
+    <form action="finalshow" class="form-horizontal" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="spcl" value="{{spcl}}">
+        <label for="inputState">Specialization</label>
+        <select name="state" id="state" class="form-group">
+            <option selected>........Choose.........</option>
+            
+            <option>mp</option>
+            <option>up</option>
+            <option>rj</option>
+            
+            
+        </select>
+        <select id="city" name="city"></select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#state").change(function() {
+            var nm = document.getElementById('state').value;
+            $.get("cityload", {
+                    name: nm
+                },
+                function(data) {
+                    $("#city").html(data);
+                });
+        });
+    });
+</script>
+
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">List of all the NGO's
+        <small></small>
+    </h1>
+
+    <div class="row">
+        {% for ngo in ngos %}
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" <img src="{{ngo.ngo_logo.url}}" width=100px height="200px" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="#">{{ngo.name}}</a>
+                    </h4>
+                    <p class="card-text">{{ngo.description}}</p>
+                </div>
+                <a href="viewdetails?ngo={{ngo.reg_no}}" class="btn btn-primary">View Profile</a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+    </div>
+    <!-- /.row -->
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% load static %} {% static "images" as baseURL %} {% block title %}Ngo's {% endblock %} {% block content %}
+
+<div class="d-flex justify-content-center mt-2">
+    <form action="search" class="form-horizontal" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="inputState">Specialization</label>
+        <select name="sp" id="inputState" class="form-group">
+            <option selected>........Choose.........</option>
+            
+            <option value="animal welfare">animal welfare</option>
+            <option value="arts & culture">arts & culture</option>
+            <option value="children">children</option>
+            <option value="development">development</option>
+            <option value="disability">disability</option>
+            <option value="elderly">elderly</option>
+            <option value="environment">environment</option>
+            <option value="governance">governance</option>
+            <option value="health">health</option>
+            <option value="women">women</option>
+            <option value="livelihood">livelihood</option>
+            
+            
+        </select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+</div>
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">List of all the NGO's
+        <small></small>
+    </h1>
+
+    <div class="row">
+        {% for ngo in ngos %}
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" <img src="{{ngo.ngo_logo.url}}" width=100px height="200px" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="#">{{ngo.name}}</a>
+                    </h4>
+                    <p class="card-text">{{ngo.description}}</p>
+                </div>
+                <a href="viewdetails?ngo={{ngo.reg_no}}" class="btn btn-primary">View Profile</a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+    <!-- /.row -->
+
+
+
+</div>
+
+{% endblock %}
