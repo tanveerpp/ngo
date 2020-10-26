@@ -25,7 +25,7 @@ SECRET_KEY = 'ia&+q#z$(i6ouf5w-_kke4#h90fs$ow#vj$=9e(eo59g5jb&=^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ngoapp44.herokuapp.com/","localhost"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'ngo',
         'USER':'root',
         'PASSWORD':'',
-        'HOST':'127.0.0.1',
+        'HOST':'localhost',
         'PORT':'3306'
     }
 }
